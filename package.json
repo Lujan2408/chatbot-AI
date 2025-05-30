@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@openrouter/ai-sdk-provider": "^0.7.0",
     "@tailwindcss/vite": "^4.1.8",
+    "axios": "^1.9.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "tailwindcss": "^4.1.8",
