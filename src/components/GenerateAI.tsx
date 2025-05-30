@@ -1,13 +1,29 @@
+import { useState } from "react"
+import ErrorMessage from "./ErrorMessage"
+
 export default function GenerateAI() {  
 
-  const handleSubmit = (e : React.FormEvent<HTMLFormElement>) => {
+  const [error, setError] = useState('')
+
+  const handleSubmit = async (e : React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
+    // Generate form object according to the submit we are generating 
+    const form = new FormData(e.currentTarget)
+    const prompt = form.get('prompt') as string
+
+    if(prompt.trim() === '') {
+      setError('¡La consulta no puede ir vacía!')
+      return 
+    }
   }
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-slate-800">
       <div className="text-center">
         <h1 className="text-6xl text-white font-extrabold mb-10">¡Bienvenido!</h1>
+
+        {error && <ErrorMessage>{error}</ErrorMessage>}
 
         <form  
           onSubmit={handleSubmit}
