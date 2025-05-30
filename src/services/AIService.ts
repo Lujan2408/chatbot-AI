@@ -8,6 +8,6 @@ export default {
       model: openrouter('google/gemini-2.0-flash-exp:free'), 
       prompt 
     }) 
-  
+    return response.textStream
   }
 }

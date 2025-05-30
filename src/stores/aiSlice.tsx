@@ -6,10 +6,9 @@ export type AISlice = {
   generateAnswer: (prompt : string) => Promise<void>
 }
 
-export const createAISlice : StateCreator<AISlice, [], [], AISlice> = () => ({
-  chat: '',
+export const createAISlice: StateCreator<AISlice, [], [], AISlice> = () => ({
+  chat: "",
   generateAnswer: async (prompt) => {
-    
-    await AIService.generateAnswer(prompt)
-  } 
-})
+    const data = await AIService.generateAnswer(prompt)
+  },
+});
