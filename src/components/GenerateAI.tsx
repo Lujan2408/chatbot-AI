@@ -1,9 +1,11 @@
 import { useState } from "react"
 import ErrorMessage from "./ErrorMessage"
+import { useAppStore } from "../stores/useAppStore"
 
 export default function GenerateAI() {  
 
   const [error, setError] = useState('')
+  const generateAsnwer = useAppStore(state => state.generateAnswer )
 
   const handleSubmit = async (e : React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -16,6 +18,8 @@ export default function GenerateAI() {
       setError('¡La consulta no puede ir vacía!')
       return 
     }
+
+    await generateAsnwer(prompt)
   }
 
   return (
