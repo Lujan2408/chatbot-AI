@@ -1,8 +1,10 @@
+import GenerateAI from "./components/GenerateAI";
+
 function App() {
 
   return (
     <>
-     <h1>ChatBot - Gemini Flash AI</h1>
+    <GenerateAI />
     </>
   )
 }
