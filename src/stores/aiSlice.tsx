@@ -1,4 +1,5 @@
 import { type StateCreator } from 'zustand'
+import AIService from '../services/AIService'
 
 export type AISlice = {
   chat: string
@@ -9,6 +10,6 @@ export const createAISlice : StateCreator<AISlice, [], [], AISlice> = () => ({
   chat: '',
   generateAnswer: async (prompt) => {
     
-    console.log(prompt)
+    await AIService.generateAnswer(prompt)
   } 
 })
