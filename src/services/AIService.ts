@@ -1,11 +1,11 @@
-import { openrouter } from '@openrouter/ai-sdk-provider'
 import { streamText } from 'ai'
+import openrouter from '../lib/ai'
 
 export default {
   async generateAnswer(prompt : string) {
     
     const response = streamText({
-      model: openrouter('google/gemini-2.0-flash-exp:free'), 
+      model: openrouter("meta-llama/llama-4-maverick:free"), 
       prompt 
     }) 
     return response.textStream
