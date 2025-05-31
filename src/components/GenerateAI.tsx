@@ -6,6 +6,7 @@ export default function GenerateAI() {
   const [error, setError] = useState('')
   const generateAsnwer = useAppStore(state => state.generateAnswer)
   const chatAnswer = useAppStore(state => state.chat)
+  const isGenerating = useAppStore(state => state.isGenerating)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -35,13 +36,14 @@ export default function GenerateAI() {
             <input
               name="prompt"
               id="prompt"
-              className="border border-none bg-white p-4 rounded-full w-full text-sm sm:text-base"
+              className="border border-none bg-white p-4 rounded-full w-full text-sm font-medium sm:text-base"
               placeholder="¿Qué deseas hacer?"
             />
             <button
               type="submit"
               aria-label="Enviar"
-              className="cursor-pointer absolute top-1/2 right-4 transform -translate-y-1/2"
+              className={`cursor-pointer absolute top-1/2 right-4 transform -translate-y-1/2 ${isGenerating ? "cursor-not-allowed opacity-30" : ""}`}
+              disabled={isGenerating}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +63,8 @@ export default function GenerateAI() {
           </div>
         </form>
 
-        <div className="flex justify-center">
+        {isGenerating && <p className="mb-10 font-semibold text-slate-50">Generando...</p>}
+        <div className="flex justify-center mt-20">
           <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-xl p-4 sm:p-6 max-w-full sm:max-w-2xl text-white text-left w-full">
             {chatAnswer ? (
               <p className="whitespace-pre-wrap leading-relaxed text-sm sm:text-base">
