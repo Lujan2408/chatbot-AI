@@ -1,5 +1,7 @@
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 
-export const openrouter = createOpenRouter({
+const openrouter = createOpenRouter({
   apiKey: import.meta.env.VITE_OPENROUTER_KEY, 
 })
+
+export default openrouter
